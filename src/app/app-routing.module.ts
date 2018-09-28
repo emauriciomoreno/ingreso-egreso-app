@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth/auth-guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from "@angular/core";
@@ -10,7 +11,8 @@ const routes:Routes = [
     { path: 'register', component: RegisterComponent },
     { 
         path: '', component: DashboardComponent,
-        children: dashboardRoutes
+        children: dashboardRoutes,
+        canActivate: [AuthGuardService]
     },
     { path: '**', redirectTo:''}
 ];
